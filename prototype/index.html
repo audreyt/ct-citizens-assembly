@@ -8,21 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --navy: #1a237e;
-    --navy-dark: #0d1757;
-    --navy-light: #283593;
-    --purple: #7b2d8b;
-    --magenta: #c2185b;
-    --orange: #e64a19;
-    --yellow: #f9a825;
-    --coral: #ef5350;
-    --maroon: #880e4f;
+    --navy: #1a3a6e;
+    --navy-dark: #0f2347;
+    --navy-light: #2a4f8f;
+    --gold: #f0a500;
+    --gold-light: #f5c040;
+    --gold-pale: #fef6e0;
     --white: #ffffff;
-    --off-white: #f8f9fd;
-    --gray-light: #eef0f8;
-    --gray-mid: #c5cae9;
-    --gray-text: #5c6bc0;
-    --text: #1a237e;
+    --gray-light: #f4f6fb;
+    --gray-mid: #e0e6f0;
+    --gray-text: #5a6a85;
+    --text: #1a1a2e;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -49,8 +45,7 @@
     padding: 0 2.5rem;
     height: 70px;
     box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-    border-bottom: 4px solid transparent;
-    border-image: linear-gradient(to right, #7b2d8b, #c2185b, #e64a19, #f9a825, #ef5350) 1;
+    border-bottom: 2px solid var(--gray-mid);
   }
 
   .nav-logo img {
@@ -74,37 +69,56 @@
     text-transform: uppercase;
   }
 
-  .nav-links a:hover { color: var(--purple); }
+  .nav-links a:hover { color: var(--gold); }
 
   .nav-cta {
-    background: var(--navy-dark);
-    color: var(--white) !important;
+    background: var(--gold);
+    color: var(--navy-dark) !important;
     padding: 0.5rem 1.2rem;
     border-radius: 4px;
     font-weight: 700 !important;
   }
 
-  .nav-cta:hover { background: var(--purple) !important; color: var(--white) !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy-dark) !important; }
 
   /* HERO */
   .hero {
     min-height: 100vh;
-    background: var(--white);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 7rem 4rem 4rem;
+    justify-content: center;
+    text-align: center;
+    padding: 7rem 2rem 5rem;
     position: relative;
     overflow: hidden;
   }
 
-  .hero-text { position: relative; z-index: 2; }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 20% 80%, rgba(240,165,0,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 20%, rgba(240,165,0,0.08) 0%, transparent 55%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 860px; }
 
   .hero-badge {
     display: inline-block;
-    background: rgba(123,45,139,0.1);
-    border: 1px solid rgba(123,45,139,0.3);
-    color: var(--purple);
+    background: rgba(240,165,0,0.15);
+    border: 1px solid rgba(240,165,0,0.4);
+    color: var(--gold-light);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -116,26 +130,28 @@
 
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-size: clamp(2.8rem, 6vw, 5rem);
     font-weight: 900;
-    color: var(--navy);
+    color: var(--white);
     line-height: 1.1;
     margin-bottom: 0.4rem;
   }
+
+  .hero h1 span { color: var(--gold); }
 
   .hero-sub {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 700;
-    color: var(--magenta);
+    color: var(--gold);
     margin-bottom: 1.8rem;
   }
 
   .hero p {
-    font-size: 1.1rem;
-    color: var(--gray-text);
-    max-width: 520px;
-    margin-bottom: 2.5rem;
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
     line-height: 1.75;
     font-weight: 300;
   }
@@ -143,28 +159,27 @@
   .hero-buttons {
     display: flex;
     gap: 1rem;
+    justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
   }
 
   .btn-primary {
-    background: var(--navy-dark);
-    color: var(--white);
+    background: var(--gold);
+    color: var(--navy-dark);
     padding: 0.85rem 2rem;
     border-radius: 5px;
     font-weight: 700;
     font-size: 1rem;
     text-decoration: none;
-    border: 2px solid var(--navy-dark);
+    border: 2px solid var(--gold);
     letter-spacing: 0.02em;
-    transition: all 0.2s;
   }
 
   .btn-primary:hover {
-    background: var(--purple);
-    border-color: var(--purple);
+    background: var(--gold-light);
+    border-color: var(--gold-light);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(123,45,139,0.3);
+    box-shadow: 0 8px 24px rgba(240,165,0,0.3);
   }
 
   .btn-outline {
@@ -176,7 +191,6 @@
     font-size: 1rem;
     text-decoration: none;
     border: 2px solid rgba(255,255,255,0.4);
-    transition: all 0.2s;
   }
 
   .btn-outline:hover {
@@ -185,34 +199,6 @@
     transform: translateY(-2px);
   }
 
-  /* HEX ACCENT BARS */
-  .hero-hex-bars {
-    display: flex;
-    gap: 6px;
-    margin-top: 1rem;
-  }
-
-  .hero-hex-bar {
-    height: 6px;
-    flex: 1;
-    border-radius: 3px;
-  }
-
-  /* HEX CLUSTER */
-  .hex-cluster {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hex-cluster img {
-    width: 100%;
-    max-width: 520px;
-    height: auto;
-    display: block;
-  }
-
-  /* SCROLL */
   .hero-scroll {
     position: absolute;
     bottom: 2.5rem;
@@ -222,7 +208,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
-    color: var(--gray-mid);
+    color: rgba(255,255,255,0.4);
     font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -231,14 +217,12 @@
   .scroll-line {
     width: 1px;
     height: 48px;
-    background: linear-gradient(to bottom, var(--gray-mid), transparent);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
   }
 
   /* STAT BAR */
   .stat-bar {
-    background: var(--navy-dark);
-    border-top: 4px solid transparent;
-    border-image: linear-gradient(to right, #7b2d8b, #c2185b, #e64a19, #f9a825, #ef5350) 1;
+    background: var(--gold);
     padding: 1.2rem 2rem;
     display: flex;
     justify-content: center;
@@ -248,7 +232,7 @@
 
   .stat-item {
     text-align: center;
-    color: var(--white);
+    color: var(--navy-dark);
   }
 
   .stat-num {
@@ -256,7 +240,6 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.7rem;
     font-weight: 900;
-    color: var(--white);
   }
 
   .stat-label {
@@ -264,7 +247,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.6);
+    opacity: 0.75;
   }
 
   /* SECTION */
@@ -277,7 +260,7 @@
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--purple);
+    color: var(--gold);
     margin-bottom: 0.8rem;
   }
 
@@ -290,7 +273,7 @@
     margin-bottom: 1.2rem;
   }
 
-  .section-title span { color: var(--magenta); }
+  .section-title span { color: var(--gold); }
 
   .section-lead {
     font-size: 1.1rem;
@@ -300,7 +283,7 @@
   }
 
   /* ABOUT */
-  .about { background: var(--off-white); }
+  .about { background: var(--gray-light); }
 
   .about-grid {
     display: grid;
@@ -314,11 +297,10 @@
   }
 
   .about-card {
-    background: var(--white);
+    background: var(--navy-dark);
     border-radius: 12px;
     padding: 3rem 2.5rem;
-    border-left: 4px solid var(--purple);
-    box-shadow: 0 4px 32px rgba(26,35,126,0.1);
+    color: white;
     position: relative;
     overflow: hidden;
   }
@@ -328,14 +310,14 @@
     position: absolute;
     top: -40px; right: -40px;
     width: 180px; height: 180px;
-    background: radial-gradient(circle, rgba(123,45,139,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(240,165,0,0.2) 0%, transparent 70%);
     border-radius: 50%;
   }
 
   .about-card-icon {
     width: 60px;
     height: 60px;
-    background: var(--purple);
+    background: var(--gold);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -348,13 +330,13 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--navy);
+    color: var(--gold);
   }
 
   .about-card p {
     font-size: 0.95rem;
     line-height: 1.8;
-    color: var(--gray-text);
+    color: rgba(255,255,255,0.8);
   }
 
   .about-accent {
@@ -363,20 +345,20 @@
     right: -1.5rem;
     width: 140px;
     height: 140px;
-    background: var(--purple);
+    background: var(--gold);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    box-shadow: 0 12px 40px rgba(123,45,139,0.3);
+    box-shadow: 0 12px 40px rgba(240,165,0,0.3);
   }
 
   .about-accent span:first-child {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     font-weight: 900;
-    color: var(--white);
+    color: var(--navy-dark);
     line-height: 1;
   }
 
@@ -385,7 +367,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: rgba(255,255,255,0.85);
+    color: var(--navy-dark);
     text-align: center;
     padding: 0 0.5rem;
   }
@@ -401,34 +383,27 @@
   }
 
   .step {
-    background: var(--white);
+    background: var(--gray-light);
     border-radius: 12px;
     padding: 2.5rem 2rem;
     position: relative;
-    box-shadow: 0 2px 20px rgba(26,35,126,0.07);
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-top: 4px solid var(--gold);
   }
-
-  .step:nth-child(1) { border-top: 4px solid var(--orange); }
-  .step:nth-child(2) { border-top: 4px solid var(--magenta); }
-  .step:nth-child(3) { border-top: 4px solid var(--purple); }
 
   .step:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(26,35,126,0.12);
+    box-shadow: 0 20px 50px rgba(26,58,110,0.12);
   }
 
   .step-num {
     font-family: 'Playfair Display', serif;
     font-size: 3rem;
     font-weight: 900;
+    color: var(--gold);
+    opacity: 0.3;
     line-height: 1;
     margin-bottom: 0.5rem;
   }
-
-  .step:nth-child(1) .step-num { color: rgba(230,74,25,0.25); }
-  .step:nth-child(2) .step-num { color: rgba(194,24,91,0.25); }
-  .step:nth-child(3) .step-num { color: rgba(123,45,139,0.25); }
 
   .step-icon {
     font-size: 1.8rem;
@@ -465,7 +440,7 @@
     left: 50%;
     top: 0; bottom: 0;
     width: 2px;
-    background: linear-gradient(to bottom, var(--purple), transparent);
+    background: linear-gradient(to bottom, var(--gold), rgba(240,165,0,0.2));
     transform: translateX(-50%);
   }
 
@@ -486,10 +461,10 @@
     grid-column: 2;
     width: 16px;
     height: 16px;
-    background: var(--yellow);
+    background: var(--gold);
     border-radius: 50%;
     border: 3px solid var(--navy-dark);
-    box-shadow: 0 0 0 3px var(--yellow);
+    box-shadow: 0 0 0 3px var(--gold);
     z-index: 1;
   }
 
@@ -497,7 +472,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--yellow);
+    color: var(--gold);
     margin-bottom: 0.4rem;
   }
 
@@ -508,10 +483,10 @@
   }
 
   /* POLICY */
-  .policy { background: #f3e5f5; }
+  .policy { background: var(--gold-pale); }
 
   .policy-inner {
-    background: linear-gradient(135deg, var(--navy-dark), var(--purple));
+    background: linear-gradient(135deg, var(--navy-dark), var(--navy-light));
     border-radius: 16px;
     padding: 4rem 3.5rem;
     display: grid;
@@ -528,7 +503,7 @@
     position: absolute;
     right: -60px; top: -60px;
     width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(249,168,37,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(240,165,0,0.15) 0%, transparent 70%);
     border-radius: 50%;
   }
 
@@ -542,8 +517,8 @@
   }
 
   .policy-highlight {
-    background: rgba(249,168,37,0.12);
-    border-left: 4px solid var(--yellow);
+    background: rgba(240,165,0,0.15);
+    border-left: 4px solid var(--gold);
     padding: 1.2rem 1.5rem;
     border-radius: 0 8px 8px 0;
   }
@@ -576,14 +551,13 @@
     text-decoration: none;
     color: var(--text);
     cursor: pointer;
-    transition: all 0.2s;
   }
 
   .resource-card:hover {
-    border-color: var(--purple);
-    background: rgba(123,45,139,0.06);
+    border-color: var(--gold);
+    background: var(--gold-pale);
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(26,35,126,0.1);
+    box-shadow: 0 10px 30px rgba(26,58,110,0.1);
   }
 
   .resource-icon {
@@ -666,7 +640,7 @@
   .contact-info h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.3rem;
-    color: var(--yellow);
+    color: var(--gold);
     margin-bottom: 1rem;
   }
 
@@ -685,14 +659,13 @@
     text-decoration: none;
     color: rgba(255,255,255,0.85);
     font-size: 0.95rem;
-    transition: color 0.2s;
   }
 
-  .contact-email:hover { color: var(--yellow); }
+  .contact-email:hover { color: var(--gold); }
 
   .email-dot {
     width: 8px; height: 8px;
-    background: var(--yellow);
+    background: var(--gold);
     border-radius: 50%;
     flex-shrink: 0;
   }
@@ -743,15 +716,15 @@
   .form-group select:focus,
   .form-group textarea:focus {
     outline: none;
-    border-color: var(--yellow);
+    border-color: var(--gold);
     background: rgba(255,255,255,0.1);
   }
 
   .form-group select option { background: var(--navy-dark); }
 
   .btn-submit {
-    background: var(--magenta);
-    color: white;
+    background: var(--gold);
+    color: var(--navy-dark);
     border: none;
     padding: 0.9rem 2rem;
     border-radius: 6px;
@@ -760,36 +733,29 @@
     cursor: pointer;
     font-family: inherit;
     align-self: flex-start;
-    transition: all 0.2s;
   }
 
   .btn-submit:hover {
-    background: var(--maroon);
+    background: var(--gold-light);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(194,24,91,0.35);
+    box-shadow: 0 8px 24px rgba(240,165,0,0.3);
   }
 
   /* FOOTER */
   footer {
-    background: #050d2a;
+    background: #07152a;
     color: rgba(255,255,255,0.45);
     text-align: center;
     padding: 2rem;
     font-size: 0.85rem;
   }
 
-  footer span { color: var(--yellow); opacity: 0.8; }
+  footer span { color: var(--gold); opacity: 0.8; }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 0 1.2rem; }
     .nav-links { gap: 1rem; }
-    .hero {
-      grid-template-columns: 1fr;
-      padding: 6rem 1.5rem 4rem;
-      min-height: auto;
-    }
-    .hex-cluster { display: none; }
     .about-grid,
     .roadmap-steps,
     .contact-grid,
@@ -815,7 +781,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="media/CTCA-honeycomb.png" alt="Connecticut Citizens' Assembly" />
+    <img src="media/ct-citizens-assembly-logo.png" alt="Connecticut Citizens' Assembly" />
   </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -829,8 +795,8 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <!-- <div class="hero-badge">A Democratic Initiative for Connecticut</div> -->
+  <div class="hero-grid"></div>
+  <div class="hero-content">
     <h1>Connecticut<br/>Citizens' Assembly</h1>
     <div class="hero-sub">on property taxes</div>
     <p>Help support the statewide conversation on establishing sustainable and equitable funding models for the essential services that keep our communities thriving.</p>
@@ -838,21 +804,11 @@
       <a href="https://49d05cdd-c1ff-4df9-97e4-4a70df0bdcba.filesusr.com/ugd/9db99b_a191c35affec4b389c5475b601d9df03.pdf" class="btn-primary" target="_blank">Learn More ↓</a>
       <!-- <a href="#contact" class="btn-outline">Support the Assembly</a> -->
     </div>
-    <div class="hero-hex-bars">
-      <div class="hero-hex-bar" style="background:var(--purple);"></div>
-      <div class="hero-hex-bar" style="background:var(--magenta);"></div>
-      <div class="hero-hex-bar" style="background:var(--orange);"></div>
-      <div class="hero-hex-bar" style="background:var(--yellow);"></div>
-      <div class="hero-hex-bar" style="background:var(--coral);"></div>
-    </div>
   </div>
-  <div class="hex-cluster" aria-hidden="true">
-    <img src="media/ct-honeycomb.png" alt="" />
-  </div>
-  <!-- <div class="hero-scroll">
+  <div class="hero-scroll">
     <div class="scroll-line"></div>
     <span>Scroll</span>
-  </div> -->
+  </div>
 </section>
 
 <!-- STAT BAR -->
@@ -936,7 +892,7 @@
 <section class="timeline-section" id="timeline">
   <div class="container">
     <div>
-      <div class="section-eyebrow" style="color:rgba(255,255,255,0.7)">Our Path Forward</div>
+      <div class="section-eyebrow" style="color:var(--gold-light)">Our Path Forward</div>
       <h2 class="section-title">Timeline</h2>
       <p class="section-lead" style="color:rgba(255,255,255,0.6)">Our path from design to implementation to lasting impact on Connecticut's communities.</p>
     </div>
@@ -982,7 +938,7 @@
   <div class="container">
     <div class="policy-inner">
       <div>
-        <div class="section-eyebrow" style="color:rgba(255,255,255,0.7)">Legislative Partnership</div>
+        <div class="section-eyebrow" style="color:var(--gold-light)">Legislative Partnership</div>
         <h2 class="section-title">From Citizens to <span>State Policy</span></h2>
         <p>The Connecticut Citizens' Assembly works in direct partnership with elected officials to ensure that the voices of everyday residents shape real policy outcomes — not just advisory reports.</p>
         <div class="policy-highlight">
@@ -990,7 +946,7 @@
         </div>
       </div>
       <div>
-        <div class="section-eyebrow" style="color:rgba(255,255,255,0.7)">Our Commitment</div>
+        <div class="section-eyebrow" style="color:var(--gold-light)">Our Commitment</div>
         <h2 class="section-title" style="font-size:1.8rem;">Empowering Citizens with the Information to Shape Connecticut's Future</h2>
         <p>We are committed to transparency, rigorous process design, and genuine civic engagement. Every participant receives the expert knowledge and deliberative support needed to make meaningful, informed recommendations.</p>
         <a href="#contact" class="btn-primary" style="display:inline-block; margin-top:1rem;">Support the Assembly</a>
@@ -1003,7 +959,7 @@
 <section class="resources" id="resources">
   <div class="container">
     <div style="text-align:center;">
-      <div class="section-eyebrow" style="color:var(--orange)">Downloads</div>
+      <div class="section-eyebrow">Downloads</div>
       <h2 class="section-title">Resource <span>Library</span></h2>
       <p class="section-lead" style="margin:0 auto 2rem;">Access key research, policy briefs, and reports supporting the Connecticut Citizens' Assembly on local public services.</p>
       <a href="resources.html" class="btn-primary">Browse the Resource Library →</a>
@@ -1031,7 +987,7 @@
 <section class="contact" id="contact">
   <div class="container">
     <div>
-      <div class="section-eyebrow" style="color:rgba(249,168,37,0.8)">Connect With Us</div>
+      <div class="section-eyebrow" style="color:var(--gold-light)">Connect With Us</div>
       <h2 class="section-title">Get in <span>Touch</span></h2>
       <p class="section-lead" style="color:rgba(255,255,255,0.6)">Have questions about the assembly or want to provide input? Want to offer financial or in-kind support, or looking for opportunities for research? We are committed to transparency and citizen engagement throughout this process.</p>
     </div>
@@ -1102,7 +1058,7 @@
       const id = section.getAttribute('id');
       const link = document.querySelector(`.nav-links a[href="#${id}"]`);
       if (link && scrollY >= top && scrollY < bottom) {
-        link.style.color = 'var(--purple)';
+        link.style.color = 'var(--gold)';
       } else if (link) {
         link.style.color = '';
       }
