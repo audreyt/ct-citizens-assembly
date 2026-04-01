@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About the Assembly — Connecticut Citizens' Assembly</title>
+<link rel="icon" type="image/png" href="media/ct-honeycomb.png" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #1a237e;
+    --navy-dark: #0d1757;
+    --navy-light: #283593;
+    --purple: #7b2d8b;
+    --magenta: #c2185b;
+    --orange: #e64a19;
+    --yellow: #f9a825;
+    --coral: #ef5350;
+    --maroon: #880e4f;
+    --white: #ffffff;
+    --off-white: #f8f9fd;
+    --gray-light: #eef0f8;
+    --gray-mid: #c5cae9;
+    --gray-text: #5c6bc0;
+    --text: #1a237e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Public Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 70px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    border-bottom: 4px solid transparent;
+    border-image: linear-gradient(to right, #7b2d8b, #c2185b, #e64a19, #f9a825, #ef5350) 1;
+  }
+
+  .nav-logo img { height: 62px; display: block; }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover { color: var(--purple); }
+
+  .nav-cta {
+    background: var(--navy-dark);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover { background: var(--purple) !important; color: var(--white) !important; }
+
+  /* COLOR STRIPE */
+  .color-stripe { display: flex; height: 5px; }
+  .color-stripe span { flex: 1; }
+
+  /* CONTAINERS */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .container-narrow { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 9rem 2rem 5rem;
+    background: var(--off-white);
+    border-bottom: 1px solid var(--gray-mid);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(123,45,139,0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .page-header-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .page-eyebrow {
+    display: inline-block;
+    background: rgba(123,45,139,0.1);
+    border: 1px solid rgba(123,45,139,0.3);
+    color: var(--purple);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    margin-bottom: 1.2rem;
+  }
+
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    color: var(--navy-dark);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .page-header h1 span { color: var(--magenta); }
+
+  .page-header-lead {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .page-header-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    border-left: 4px solid var(--magenta);
+    padding: 0.9rem 1.2rem;
+    background: white;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 12px rgba(26,35,126,0.07);
+    line-height: 1.5;
+  }
+
+  /* STAT CARDS */
+  .stat-cluster {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 16px rgba(26,35,126,0.08);
+    border-top: 4px solid var(--purple);
+  }
+
+  .stat-card:nth-child(2) { border-top-color: var(--magenta); }
+  .stat-card:nth-child(3) { border-top-color: var(--orange); }
+  .stat-card:nth-child(4) { border-top-color: var(--yellow); }
+
+  .stat-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--navy-dark);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-card .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray-text);
+  }
+
+  /* SECTIONS */
+  .section { padding: 5rem 0; }
+  .section-alt { background: var(--off-white); }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 900;
+    color: var(--navy-dark);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-title span { color: var(--magenta); }
+
+  .section-lead {
+    font-size: 1rem;
+    color: var(--gray-text);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  /* BULLET LISTS */
+  .styled-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .styled-list li {
+    display: flex;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--gray-text);
+    line-height: 1.65;
+  }
+
+  .styled-list li::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--magenta);
+    margin-top: 0.45rem;
+    flex-shrink: 0;
+  }
+
+  /* PROBLEM CARDS */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .problem-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    border-top: 4px solid var(--orange);
+    box-shadow: 0 2px 16px rgba(26,35,126,0.06);
+  }
+
+  .problem-card:nth-child(2) { border-top-color: var(--magenta); }
+  .problem-card:nth-child(3) { border-top-color: var(--purple); }
+
+  .problem-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    margin-bottom: 0.7rem;
+  }
+
+  .problem-card p {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    line-height: 1.7;
+  }
+
+  .problem-card .highlight {
+    display: inline-block;
+    background: rgba(230,74,25,0.08);
+    color: var(--orange);
+    font-weight: 800;
+    font-size: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0.5rem;
+  }
+
+  .problem-card:nth-child(2) .highlight { color: var(--magenta); background: rgba(194,24,91,0.08); }
+  .problem-card:nth-child(3) .highlight { color: var(--purple); background: rgba(123,45,139,0.08); }
+
+  /* KEY FEATURES */
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+
+  .feature-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem 1.8rem;
+    box-shadow: 0 2px 16px rgba(26,35,126,0.06);
+    border: 1px solid var(--gray-mid);
+  }
+
+  .feature-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2.5rem;
+    text-align: center;
+  }
+
+  .feature-item:nth-child(1) .feature-num { color: var(--purple); }
+  .feature-item:nth-child(2) .feature-num { color: var(--magenta); }
+  .feature-item:nth-child(3) .feature-num { color: var(--orange); }
+
+  .feature-text h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .feature-text p {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    line-height: 1.65;
+  }
+
+  /* IMPACT / TWO-COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* IMPACT CARDS */
+  .impact-block {
+    background: white;
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: 0 2px 16px rgba(26,35,126,0.06);
+    border: 1px solid var(--gray-mid);
+    margin-bottom: 1rem;
+  }
+
+  .impact-block h4 {
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--purple);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .impact-block h4::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--purple);
+    flex-shrink: 0;
+  }
+
+  .impact-block:nth-child(2) h4 { color: var(--magenta); }
+  .impact-block:nth-child(2) h4::before { background: var(--magenta); }
+
+  .impact-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .impact-block ul li {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    line-height: 1.6;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .impact-block ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--gray-mid);
+  }
+
+  /* PATHS TO IMPACT */
+  .paths-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .path-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--gray-mid);
+    box-shadow: 0 2px 12px rgba(26,35,126,0.05);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .path-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.4rem;
+  }
+
+  .path-card p {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    line-height: 1.65;
+  }
+
+  /* TIMELINE */
+  .timeline-bar {
+    margin-top: 2.5rem;
+    background: white;
+    border-radius: 14px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 16px rgba(26,35,126,0.07);
+    border: 1px solid var(--gray-mid);
+  }
+
+  .timeline-phases {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .phase {
+    padding: 0 0.5rem;
+    position: relative;
+  }
+
+  .phase-bar {
+    height: 8px;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+  }
+
+  .phase:nth-child(1) .phase-bar { background: var(--orange); }
+  .phase:nth-child(2) .phase-bar { background: var(--yellow); }
+  .phase:nth-child(3) .phase-bar { background: var(--purple); }
+  .phase:nth-child(4) .phase-bar { background: var(--magenta); }
+
+  .phase-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--navy-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .phase-dates {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--gray-text);
+    margin-bottom: 0.3rem;
+  }
+
+  .phase-desc {
+    font-size: 0.78rem;
+    color: var(--gray-text);
+    line-height: 1.5;
+  }
+
+  /* BUDGET CALLOUT */
+  .budget-callout {
+    background: linear-gradient(135deg, var(--navy-dark), var(--purple));
+    border-radius: 14px;
+    padding: 2.5rem 3rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  .budget-callout h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-bottom: 0.3rem;
+  }
+
+  .budget-callout p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .budget-nums {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .budget-num-item { text-align: center; }
+
+  .budget-num-item .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--yellow);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .budget-num-item .lbl {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* COMPACT CALLOUT */
+  .compact-box {
+    background: var(--gray-light);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    border: 1px solid var(--gray-mid);
+    margin-top: 2.5rem;
+  }
+
+  .compact-box h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .compact-box p {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    line-height: 1.7;
+  }
+
+  .compact-box a {
+    color: var(--purple);
+    font-weight: 700;
+  }
+
+  /* CTA BANNER */
+  .cta-banner {
+    background: var(--off-white);
+    border-top: 1px solid var(--gray-mid);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 900;
+    color: var(--navy-dark);
+    margin-bottom: 0.6rem;
+  }
+
+  .cta-banner p {
+    font-size: 1rem;
+    color: var(--gray-text);
+    margin-bottom: 1.8rem;
+  }
+
+  .btn-primary {
+    background: var(--navy-dark);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    border: 2px solid var(--navy-dark);
+    letter-spacing: 0.02em;
+    display: inline-block;
+    margin: 0.4rem;
+  }
+
+  .btn-primary:hover { background: var(--purple); border-color: var(--purple); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--navy-dark);
+    padding: 0.85rem 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border: 2px solid var(--gray-mid);
+    letter-spacing: 0.02em;
+    display: inline-block;
+    margin: 0.4rem;
+  }
+
+  .btn-outline:hover { border-color: var(--navy-dark); }
+
+  /* FOOTER */
+  footer {
+    background: #050d2a;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.85rem;
+  }
+
+  footer span { color: var(--yellow); opacity: 0.8; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .page-header-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .paths-grid { grid-template-columns: 1fr; }
+    .timeline-phases { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  }
+
+  @media (max-width: 580px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { gap: 1rem; }
+    .stat-cluster { grid-template-columns: 1fr 1fr; }
+    .budget-callout { flex-direction: column; text-align: center; }
+    .budget-nums { justify-content: center; }
+    .timeline-phases { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--navy);
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 1100px) {
+    .nav-hamburger { display: block; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0; right: 0;
+      background: white;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border-top: 3px solid var(--purple);
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="media/CTCA-honeycomb.png" alt="Connecticut Citizens' Assembly" /></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#roadmap">Roadmap</a></li>
+    <li><a href="index.html#timeline">Timeline</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="login.html" id="nav-auth-link">Login</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Support the Assembly</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">&#9776;</button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <!-- <div class="page-eyebrow">Learn More</div> -->
+      <h1>CT Citizens' Assembly on<br/><span>Property Taxes</span></h1>
+      <p class="page-header-lead">An innovative, state-endorsed democratic process that gives ordinary Connecticut residents the power to shape policy on one of the state's most entrenched challenges.</p>
+      <div class="page-header-question">"How should Connecticut rethink the funding and delivery of local public services?"</div>
+    </div>
+    <div class="stat-cluster">
+      <div class="stat-card">
+        <div class="num">100</div>
+        <div class="label">Randomly Selected Citizens</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">800+</div>
+        <div class="label">Global Assemblies to Date</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">10%</div>
+        <div class="label">of CT Population Reached via AI</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">1972</div>
+        <div class="label">Last Major CT Reform</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="color-stripe">
+  <span style="background:#7b2d8b;"></span>
+  <span style="background:#c2185b;"></span>
+  <span style="background:#e64a19;"></span>
+  <span style="background:#f9a825;"></span>
+  <span style="background:#ef5350;"></span>
+</div>
+
+<!-- WHAT IS A CITIZENS' ASSEMBLY -->
+<section class="section">
+  <div class="container-narrow">
+    <div class="section-eyebrow" style="color:var(--purple);">The Process</div>
+    <h2 class="section-title">What is a <span>Citizens' Assembly?</span></h2>
+    <ul class="styled-list">
+      <li>An innovative process to solve difficult problems by leveraging ordinary citizens' perspectives — not politicians, not lobbyists, not experts alone.</li>
+      <li>Analogous to a jury for public policy: a Citizens' Assembly randomly selects 100 ordinary citizens and empowers them to learn, deliberate, and pass recommendations directly to a legislative hearing.</li>
+      <li>New to the US context, Citizens' Assemblies have been used in over 800 cases worldwide to solve entrenched problems — from abortion rights in Ireland to climate policy and end-of-life care in France.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHY CT -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--orange);">The Problem</div>
+    <h2 class="section-title">Why Does Connecticut Need a <span>Citizens' Assembly?</span></h2>
+    <p class="section-lead" style="max-width:680px;">Connecticut's property tax system creates deep structural inequities across its 169 towns — and decades of political gridlock have prevented reform. A Citizens' Assembly is uniquely positioned to break the deadlock.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="highlight">Property-only</div>
+        <h4>A Legally Restricted System</h4>
+        <p>Unlike many states, Connecticut law currently forbids any taxes for local services <em>other</em> than property taxes — locking municipalities into a single, unequal funding mechanism.</p>
+      </div>
+      <div class="problem-card">
+        <div class="highlight">7×</div>
+        <h4>Massive Imbalances</h4>
+        <p>Urban areas have lower property wealth but higher demand for local services. The average property tax bill in Hartford is approximately 7 times higher than in Sharon, despite Hartford's median income being ~3x lower.</p>
+      </div>
+      <div class="problem-card">
+        <div class="highlight">Since '72</div>
+        <h4>Decades of Gridlock</h4>
+        <p>There is widespread consensus that the system is broken — but solutions are politically challenging. No meaningful reforms have been passed since 1972.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--navy-dark);margin-bottom:1.2rem;">How a Citizens' Assembly Is Uniquely Set Up to Address It</h3>
+      <ul class="styled-list">
+        <li>Taps a diversity of perspectives, including from people who are normally never heard in the policy process.</li>
+        <li>Proven ability to build consensus: a similar process in Greater New Haven in 2002 on tax issues transformed 80% opposition to a proposal down to 40% in a single weekend.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="section">
+  <div class="container-narrow">
+    <div class="section-eyebrow" style="color:var(--purple);">What Makes This Different</div>
+    <h2 class="section-title">Key Features of the Assembly</h2>
+
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-num">1</div>
+        <div class="feature-text">
+          <h4>First Large State-Level, State-Endorsed Citizens' Assembly in the US</h4>
+          <p>This assembly sets a national precedent — a state-backed, large-scale citizens' deliberative process on a consequential policy issue, operating at the full state level for the first time in the United States.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">2</div>
+        <div class="feature-text">
+          <h4>First Large-Scale Use of AI to Link Assembly Discussion with the Public</h4>
+          <p>Using cutting-edge AI technology, the assembly aims to connect its deliberations with over 10% of Connecticut's population — extending the reach and legitimacy of citizen voices far beyond the assembly room.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">3</div>
+        <div class="feature-text">
+          <h4>Backed by State Comptroller Sean Scanlon</h4>
+          <p>State Comptroller Sean Scanlon has committed to endorse the process and hold a dedicated legislative hearing on the assembly's outputs. The Comptroller has the constitutional right to push items onto the legislative agenda on financial issues — giving the assembly's recommendations a direct path to real policy change.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACTS BEYOND CT -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--magenta);">Broader Impact</div>
+    <h2 class="section-title">Impacts <span>Beyond Connecticut</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:0.5rem;">
+      <div class="impact-block">
+        <h4>Catalyzing a Movement</h4>
+        <ul>
+          <li>Currently collaborating with State Representatives in Vermont and Maine, with interest from Massachusetts and New York, to use this Assembly to foster similar statewide efforts — including legislation to create permanent Citizens' Assemblies.</li>
+          <li>Discussing a partnership with FIDE to have Governors and Secretaries of State from Kentucky, Washington, and Pennsylvania observe the assembly.</li>
+        </ul>
+      </div>
+      <div class="impact-block">
+        <h4>Research</h4>
+        <ul>
+          <li>Developing a research program with the Yale Citizens' Assembly Program and Nobel Laureate Oliver Hart to adapt Citizens' Assemblies for corporate governance.</li>
+          <li>Working with researchers at UConn and Yale on additional research questions, including the impact of macro-listening, dispersal effects of the assembly, and more.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATHS TO IMPACT -->
+<section class="section">
+  <div class="container-narrow">
+    <div class="section-eyebrow" style="color:var(--orange);">Legislative Strategy</div>
+    <h2 class="section-title">Paths to <span>Impact</span></h2>
+    <p class="section-lead">Multiple strategies to drive direct legislative change:</p>
+    <div class="paths-grid">
+      <div class="path-card">
+        <div class="path-dot" style="background:var(--purple);"></div>
+        <p>Commitment from State Comptroller Sean Scanlon to endorse the process and hold a dedicated legislative hearing on assembly outputs.</p>
+      </div>
+      <div class="path-card">
+        <div class="path-dot" style="background:var(--magenta);"></div>
+        <p>Commitment to bring all four caucus leaders to the assembly in person.</p>
+      </div>
+      <div class="path-card">
+        <div class="path-dot" style="background:var(--orange);"></div>
+        <p>Commitment to highlight assembly recommendations during the gubernatorial debate.</p>
+      </div>
+      <div class="path-card">
+        <div class="path-dot" style="background:var(--yellow);"></div>
+        <p>Network of media relationships including network TV outlets and major newspapers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE & BUDGET -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--purple);">Timeline & Budget</div>
+    <h2 class="section-title">How We Get There</h2>
+
+    <div class="timeline-bar">
+      <div class="timeline-phases">
+        <div class="phase">
+          <div class="phase-bar"></div>
+          <div class="phase-label">Finalization</div>
+          <div class="phase-dates">January – March</div>
+          <div class="phase-desc">Close funding, confirm go/no-go decision by March.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-bar"></div>
+          <div class="phase-label">Preparation</div>
+          <div class="phase-dates">April – June</div>
+          <div class="phase-desc">3 months preparation window — recruitment, design, expert briefings.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-bar"></div>
+          <div class="phase-label">Execution</div>
+          <div class="phase-dates">July – September</div>
+          <div class="phase-desc">3 months of assembly sessions — learning, deliberation, recommendations.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-bar"></div>
+          <div class="phase-label">Impact Phase</div>
+          <div class="phase-dates">September – Onward</div>
+          <div class="phase-desc">Polls on proposals, gubernatorial campaign exposure, citizen advocacy, and legislative action.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="budget-callout">
+      <div>
+        <h3>Funding Status</h3>
+        <p>Help close the gap and make this historic assembly a reality.</p>
+      </div>
+      <div class="budget-nums">
+        <div class="budget-num-item">
+          <span class="num">$650K</span>
+          <span class="lbl">Pledged</span>
+        </div>
+        <div class="budget-num-item">
+          <span class="num">$200K</span>
+          <span class="lbl">Gap Remaining</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="container-narrow">
+    <h2>Support the Assembly</h2>
+    <p>Your contribution helps fund the first large state-level Citizens' Assembly in US history.</p>
+    <a href="index.html#contact" class="btn-primary">Get in Touch →</a>
+    <a href="team.html" class="btn-outline">Meet the Team</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Connecticut Citizens' Assembly</span>. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script>
+  (async () => {
+    const { data: { session } } = await db.auth.getSession();
+    const link = document.getElementById('nav-auth-link');
+    if (session) {
+      link.textContent = 'My Account';
+      link.href = 'dashboard.html';
+    }
+  })();
+
+  function toggleMobileNav() {
+    document.querySelector('.nav-links').classList.toggle('open');
+  }
+</script>
+</body>
+</html>

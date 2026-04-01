@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Connecticut Citizens' Assembly on Property Taxes</title>
-<link rel="icon" type="image/png" href="media/ctca-logo.png" />
+<link rel="icon" type="image/png" href="media/ct-honeycomb.png" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
 <style>
   :root {
@@ -82,6 +82,7 @@
     padding: 0.5rem 1.2rem;
     border-radius: 4px;
     font-weight: 700 !important;
+    white-space: nowrap;
   }
 
   .nav-cta:hover { background: var(--purple) !important; color: var(--white) !important; }
@@ -808,6 +809,37 @@
     .about-accent { display: none; }
     .stat-bar { gap: 2rem; }
   }
+
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--navy);
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 1100px) {
+    .nav-hamburger { display: block; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0; right: 0;
+      background: white;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border-top: 3px solid var(--purple);
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+  }
 </style>
 </head>
 <body>
@@ -818,7 +850,8 @@
     <img src="media/CTCA-honeycomb.png" alt="Connecticut Citizens' Assembly" />
   </div>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#timeline">Timeline</a></li>
     <li><a href="resources.html">Resources</a></li>
@@ -826,6 +859,7 @@
     <li><a href="login.html" id="nav-auth-link">Login</a></li>
     <li><a href="#contact" class="nav-cta">Support the Assembly</a></li>
   </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">&#9776;</button>
 </nav>
 
 <!-- HERO -->
@@ -836,7 +870,7 @@
     <div class="hero-sub">on property taxes</div>
     <p>Help support the statewide conversation on establishing sustainable and equitable funding models for the essential services that keep our communities thriving.</p>
     <div class="hero-buttons">
-      <a href="https://49d05cdd-c1ff-4df9-97e4-4a70df0bdcba.filesusr.com/ugd/9db99b_a191c35affec4b389c5475b601d9df03.pdf" class="btn-primary" target="_blank">Learn More ↓</a>
+      <a href="about.html" class="btn-primary">Learn More →</a>
       <!-- <a href="#contact" class="btn-outline">Support the Assembly</a> -->
     </div>
     <div class="hero-hex-bars">
@@ -1163,5 +1197,10 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-config.js"></script>
+<script>
+  function toggleMobileNav() {
+    document.querySelector('.nav-links').classList.toggle('open');
+  }
+</script>
 </body>
 </html>

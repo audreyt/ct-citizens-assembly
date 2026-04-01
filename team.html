@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Team — Connecticut Citizens' Assembly</title>
-<link rel="icon" type="image/png" href="media/ctca-logo.png" />
+<link rel="icon" type="image/png" href="media/ct-honeycomb.png" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
 <style>
   :root {
@@ -79,6 +79,7 @@
     padding: 0.5rem 1.2rem;
     border-radius: 4px;
     font-weight: 700 !important;
+    white-space: nowrap;
   }
 
   .nav-cta:hover { background: var(--purple) !important; color: var(--white) !important; }
@@ -265,6 +266,73 @@
     .profile-grid { grid-template-columns: 1fr; }
     .team-main { padding: 3rem 1.2rem 4rem; }
   }
+
+  /* COLLABORATORS */
+  .collaborators {
+    background: var(--gray-light);
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--gray-mid);
+  }
+
+  .collab-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .collab-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    min-width: 160px;
+    min-height: 70px;
+    border: 1px solid var(--gray-mid);
+  }
+
+  .collab-item img {
+    max-height: 90px;
+    max-width: 200px;
+    object-fit: contain;
+  }
+
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--navy);
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 1100px) {
+    .nav-hamburger { display: block; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0; right: 0;
+      background: white;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border-top: 3px solid var(--purple);
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+  }
 </style>
 </head>
 <body>
@@ -275,14 +343,16 @@
     <a href="index.html"><img src="media/CTCA-honeycomb.png" alt="Connecticut Citizens' Assembly" /></a>
   </div>
   <ul class="nav-links">
-    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="index.html#roadmap">Roadmap</a></li>
     <li><a href="index.html#timeline">Timeline</a></li>
     <li><a href="resources.html">Resources</a></li>
-    <li><a href="team.html" class="active">Team</a></li>
+    <li><a href="team.html">Team</a></li>
     <li><a href="login.html" id="nav-auth-link">Login</a></li>
     <li><a href="index.html#contact" class="nav-cta">Support the Assembly</a></li>
   </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">&#9776;</button>
 </nav>
 
 <!-- PAGE HEADER -->
@@ -303,18 +373,47 @@
 
 <!-- PROFILES -->
 <main class="team-main">
+
+  <!-- LEADERSHIP -->
+  <div style="margin-bottom:3rem;">
+    <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);margin-bottom:1.5rem;">Leadership</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:780px;margin:0 auto;">
+
+      <div class="profile-card">
+        <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
+        <div class="profile-accent" style="background:#7b2d8b;"></div>
+        <div class="profile-body">
+          <div class="profile-name">Hélène Landemore</div>
+          <div class="profile-title">Chair, Interim Expert Governance Committee</div>
+          <div class="profile-org">Yale University</div>
+          <div class="profile-bio">Placeholder biography. Professor Landemore is a leading scholar of deliberative and participatory democracy and will serve as Chair of the Interim Expert Governance Committee.</div>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
+        <div class="profile-accent" style="background:#c2185b;"></div>
+        <div class="profile-body">
+          <div class="profile-name">Joe DeLong</div>
+          <div class="profile-title">Executive Director of CCM</div>
+          <div class="profile-org">Connecticut Conference of Municipalities (CCM)</div>
+          <div class="profile-bio">Placeholder biography. Joe DeLong serves as Executive Director of CCM and brings extensive experience in Connecticut municipal policy, local government, and statewide civic engagement.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);margin-bottom:1.5rem;">Committee Members</div>
   <div class="profile-grid">
 
-    <!-- accent colors cycle: purple, magenta, orange, yellow, coral, maroon -->
-
     <div class="profile-card">
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#7b2d8b;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Alex Guerrero</div>
+        <div class="profile-title">Professor of Philosophy</div>
+        <div class="profile-org">Rutgers University</div>
       </div>
     </div>
 
@@ -322,10 +421,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#c2185b;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Audrey Tang</div>
+        <div class="profile-title">Civic Technologist & Former Digital Minister</div>
+        <div class="profile-org">Taiwan</div>
       </div>
     </div>
 
@@ -333,10 +431,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#e64a19;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Ariel Procaccia</div>
+        <div class="profile-title">Alfred and Rebecca Lin Professor of Computer Science</div>
+        <div class="profile-org">Harvard University</div>
       </div>
     </div>
 
@@ -344,10 +441,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#f9a825;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Claire Priest</div>
+        <div class="profile-title">Simeon E. Baldwin Professor of Law & History</div>
+        <div class="profile-org">Yale Law School</div>
       </div>
     </div>
 
@@ -355,10 +451,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#ef5350;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Cynthia Farrar</div>
+        <div class="profile-title">Independent Scholar & Civic Entrepreneur</div>
+        <div class="profile-org">Community Foundation for Greater New Haven</div>
       </div>
     </div>
 
@@ -366,10 +461,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#880e4f;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Daniel Selz</div>
+        <div class="profile-title">Fellow</div>
+        <div class="profile-org">Leadership Now Project</div>
       </div>
     </div>
 
@@ -377,10 +471,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#7b2d8b;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Jane Suiter</div>
+        <div class="profile-title">Professor of Political Communication</div>
+        <div class="profile-org">Dublin City University</div>
       </div>
     </div>
 
@@ -388,10 +481,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#c2185b;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Joshua Kalla</div>
+        <div class="profile-title">Associate Professor of Political Science & Statistics</div>
+        <div class="profile-org">Yale University</div>
       </div>
     </div>
 
@@ -399,10 +491,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#e64a19;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Luigi Zingales</div>
+        <div class="profile-title">Robert C. McCormack Distinguished Service Professor</div>
+        <div class="profile-org">University of Chicago Booth School of Business</div>
       </div>
     </div>
 
@@ -410,10 +501,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#f9a825;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Michael E. Morrell</div>
+        <div class="profile-title">Associate Professor of Political Science</div>
+        <div class="profile-org">University of Connecticut</div>
       </div>
     </div>
 
@@ -421,10 +511,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#ef5350;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Michiel Bakker</div>
+        <div class="profile-title">Assistant Professor & Research Scientist</div>
+        <div class="profile-org">MIT / Google DeepMind</div>
       </div>
     </div>
 
@@ -432,10 +521,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#880e4f;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Oliver Hart</div>
+        <div class="profile-title">Lewis P. and Linda L. Geyser University Professor</div>
+        <div class="profile-org">Harvard University</div>
       </div>
     </div>
 
@@ -443,10 +531,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#7b2d8b;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Peter MacLeod</div>
+        <div class="profile-title">Co-Founder & Principal</div>
+        <div class="profile-org">Mass LBP</div>
       </div>
     </div>
 
@@ -454,10 +541,9 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#c2185b;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Sophie Guillain</div>
+        <div class="profile-title">Managing Director & Partner</div>
+        <div class="profile-org">Res publica</div>
       </div>
     </div>
 
@@ -465,48 +551,28 @@
       <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
       <div class="profile-accent" style="background:#e64a19;"></div>
       <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#f9a825;"></div>
-      <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#ef5350;"></div>
-      <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#880e4f;"></div>
-      <div class="profile-body">
-        <div class="profile-name">First Last</div>
-        <div class="profile-title">Title, Department</div>
-        <div class="profile-org">Institution Name</div>
-        <div class="profile-bio">Placeholder biography. This expert brings decades of experience in their field and will contribute to the assembly's work on public finance and deliberative process design.</div>
+        <div class="profile-name">Zephyr Teachout</div>
+        <div class="profile-title">Professor of Law</div>
+        <div class="profile-org">Fordham Law School</div>
       </div>
     </div>
 
   </div>
 </main>
+
+<!-- COLLABORATORS -->
+<section class="collaborators">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--purple);">Partners</div>
+    <h2 class="section-title">Our <span>Collaborators</span></h2>
+    <div class="collab-grid">
+      <div class="collab-item"><a href="https://osc.ct.gov"><img src="media/Connecticut_State_Comptroller_Seal.png" alt="Connecticut State Comptroller" /></a></div>
+      <div class="collab-item"><a href="https://isps.yale.edu"><img src="media/Yale-ISPS-logo.png" alt="Yale ISPS" /></a></div>
+      <div class="collab-item"><a href="https://www.uconn.edu"><img src="media/UConn-Logo-Large.png.avif" alt="UConn" /></a></div>
+      <div class="collab-item"><a href="https://www.ccm-ct.org"><img src="media/CCM-logo.png" alt="CCM" /></a></div>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -524,6 +590,10 @@
       link.href = 'dashboard.html';
     }
   })();
+
+  function toggleMobileNav() {
+    document.querySelector('.nav-links').classList.toggle('open');
+  }
 </script>
 </body>
 </html>

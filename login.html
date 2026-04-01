@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sign In — Connecticut Citizens' Assembly</title>
-<link rel="icon" type="image/png" href="media/ctca-logo.png" />
+<link rel="icon" type="image/png" href="media/ct-honeycomb.png" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
 <style>
   :root {
@@ -80,6 +80,7 @@
     padding: 0.5rem 1.2rem;
     border-radius: 4px;
     font-weight: 700 !important;
+    white-space: nowrap;
   }
 
   .nav-cta:hover { background: var(--purple) !important; color: var(--white) !important; }
@@ -223,6 +224,37 @@
     nav { padding: 0 1.2rem; }
     .nav-links { gap: 0.8rem; font-size: 0.82rem; }
   }
+
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--navy);
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 1100px) {
+    .nav-hamburger { display: block; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0; right: 0;
+      background: white;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border-top: 3px solid var(--purple);
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+  }
 </style>
 </head>
 <body>
@@ -232,13 +264,16 @@
     <a href="index.html"><img src="media/CTCA-honeycomb.png" alt="Connecticut Citizens' Assembly" /></a>
   </div>
   <ul class="nav-links">
-    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="index.html#roadmap">Roadmap</a></li>
     <li><a href="index.html#timeline">Timeline</a></li>
     <li><a href="resources.html">Resources</a></li>
     <li><a href="team.html">Team</a></li>
+    <li><a href="login.html" id="nav-auth-link">Login</a></li>
     <li><a href="index.html#contact" class="nav-cta">Support the Assembly</a></li>
   </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">&#9776;</button>
 </nav>
 
 <div class="auth-page">
@@ -385,6 +420,19 @@
     const signinHidden = document.getElementById('signin-form').classList.contains('hidden');
     if (!signinHidden) signIn(); else register();
   });
+
+  function toggleMobileNav() {
+    document.querySelector('.nav-links').classList.toggle('open');
+  }
+
+  (async () => {
+    const { data: { session } } = await db.auth.getSession();
+    const link = document.getElementById('nav-auth-link');
+    if (session) {
+      link.textContent = 'My Account';
+      link.href = 'dashboard.html';
+    }
+  })();
 </script>
 </body>
 </html>
