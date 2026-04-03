@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Site Content — Connecticut Citizens' Assembly</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f5f5f5;
+    color: #111;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  header {
+    background: #0d1757;
+    color: white;
+    padding: 2rem 2.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  header h1 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.02em; }
+  header p { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem; }
+
+  .toc {
+    background: white;
+    border-bottom: 1px solid #ddd;
+    padding: 0.8rem 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+  }
+
+  .toc a {
+    color: #7b2d8b;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .toc a:hover { text-decoration: underline; }
+
+  .content-wrap {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 2rem 4rem;
+  }
+
+  /* PAGE BLOCK */
+  .page-block {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+  }
+
+  .page-block-header {
+    background: #0d1757;
+    color: white;
+    padding: 1rem 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .page-block-header h2 { font-size: 1rem; font-weight: 700; }
+  .page-block-header .file-tag {
+    background: rgba(255,255,255,0.15);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    font-family: monospace;
+  }
+
+  /* SECTION */
+  .section-block {
+    border-bottom: 1px solid #eee;
+    padding: 1.4rem 1.8rem;
+  }
+
+  .section-block:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7b2d8b;
+    margin-bottom: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #7b2d8b;
+    flex-shrink: 0;
+  }
+
+  /* FIELDS */
+  .field { margin-bottom: 1rem; }
+  .field:last-child { margin-bottom: 0; }
+
+  .field-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 0.3rem;
+  }
+
+  .field-value {
+    font-size: 0.94rem;
+    color: #111;
+    line-height: 1.65;
+  }
+
+  .field-value.editable {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 0.55rem 0.8rem;
+    min-height: 2.2rem;
+    white-space: pre-wrap;
+  }
+
+  .field-value.editable:focus {
+    outline: 2px solid #7b2d8b;
+    background: white;
+  }
+
+  .field-value em {
+    color: #999;
+    font-style: italic;
+  }
+
+  /* FIELD ROW */
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* LIST FIELDS */
+  .field-list { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.3rem; }
+
+  .field-list-item {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .field-list-item:focus {
+    outline: 2px solid #7b2d8b;
+    background: white;
+  }
+
+  /* PROFILE GRID */
+  .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+
+  .profile-item {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 0.8rem;
+  }
+
+  .profile-item .p-name {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #0d1757;
+    margin-bottom: 0.2rem;
+  }
+
+  .profile-item .p-title {
+    font-size: 0.78rem;
+    color: #5c6bc0;
+    margin-bottom: 0.15rem;
+    line-height: 1.4;
+  }
+
+  .profile-item .p-org {
+    font-size: 0.75rem;
+    color: #999;
+  }
+
+  /* SAVE BUTTON */
+  .save-bar {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    border-top: 1px solid #ddd;
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10;
+  }
+
+  .save-note { font-size: 0.82rem; color: #888; }
+
+  @media (max-width: 700px) {
+    .field-row { grid-template-columns: 1fr; }
+    .profile-grid { grid-template-columns: 1fr 1fr; }
+    .toc { padding: 0.8rem 1.2rem; }
+    .content-wrap { padding: 0 1rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Site Content — Connecticut Citizens' Assembly</h1>
+    <p>Edit all visible page text here. Content is organized by page and section.</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#index">Home (index.html)</a>
+  <a href="#about">About (about.html)</a>
+  <a href="#governance">Governance (governance.html)</a>
+</nav>
+
+<div class="content-wrap">
+
+  <!-- ============================================================ -->
+  <!-- INDEX.HTML -->
+  <!-- ============================================================ -->
+  <div class="page-block" id="index">
+    <div class="page-block-header">
+      <h2>Home Page</h2>
+      <span class="file-tag">index.html</span>
+    </div>
+
+    <!-- HERO -->
+    <div class="section-block">
+      <div class="section-label">Hero</div>
+      <div class="field">
+        <div class="field-label">Main Heading</div>
+        <div class="field-value editable" contenteditable="true">Connecticut Citizens' Assembly</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Subheading</div>
+        <div class="field-value editable" contenteditable="true">on Property Taxes</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Body Text</div>
+        <div class="field-value editable" contenteditable="true">Help support the statewide conversation on establishing sustainable and equitable funding models for the essential services that keep our communities thriving.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Button</div>
+        <div class="field-value editable" contenteditable="true">Learn More →</div>
+      </div>
+    </div>
+
+    <!-- STATS BAR -->
+    <div class="section-block">
+      <div class="section-label">Statistics Bar</div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Stat 1 — Number</div><div class="field-value editable" contenteditable="true">169</div></div>
+        <div class="field"><div class="field-label">Stat 1 — Label</div><div class="field-value editable" contenteditable="true">Connecticut Towns</div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Stat 2 — Number</div><div class="field-value editable" contenteditable="true">6–8</div></div>
+        <div class="field"><div class="field-label">Stat 2 — Label</div><div class="field-value editable" contenteditable="true">Assembly Sessions</div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Stat 3 — Number</div><div class="field-value editable" contenteditable="true">2026</div></div>
+        <div class="field"><div class="field-label">Stat 3 — Label</div><div class="field-value editable" contenteditable="true">Summer Sessions</div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Stat 4 — Number</div><div class="field-value editable" contenteditable="true">1</div></div>
+        <div class="field"><div class="field-label">Stat 4 — Label</div><div class="field-value editable" contenteditable="true">Shared Goal</div></div>
+      </div>
+    </div>
+
+    <!-- ABOUT / MISSION -->
+    <div class="section-block">
+      <div class="section-label">About / Mission Section</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">Our Mission</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">An Assembly of Everyday CT Residents to Define the Future of Local Funding</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Body — Paragraph 1</div>
+        <div class="field-value editable" contenteditable="true">The Connecticut Citizens' Assembly is a groundbreaking democratic initiative designed to give residents a direct voice in state policy. By bringing together a representative group of citizens from across the state, we aim to solve the complex challenge of funding local public services while ensuring equity and sustainability for every municipality.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Body — Paragraph 2</div>
+        <div class="field-value editable" contenteditable="true">From transportation and infrastructure to education and emergency response, local public services are the backbone of our communities. Our mission is to give a representative sample of the people of Connecticut a chance to set their priorities for public service provision and funding.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card Heading</div>
+        <div class="field-value editable" contenteditable="true">169 Towns, One Goal</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card Body</div>
+        <div class="field-value editable" contenteditable="true">Every corner of Connecticut — from coastal towns to rural communities — deserves a seat at the table. Our assembly ensures diverse, representative voices shape the future of how we fund the services that matter most.</div>
+      </div>
+    </div>
+
+    <!-- ROADMAP -->
+    <div class="section-block">
+      <div class="section-label">Roadmap Section</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">How It Works</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">The Assembly Roadmap</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Lead</div>
+        <div class="field-value editable" contenteditable="true">A structured, three-stage approach to redefining public service funding in Connecticut — from expert learning to legislative impact.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Step 1 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Assembly Process</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Step 1 — Body</div>
+        <div class="field-value editable" contenteditable="true">The assembly follows a three-stage roadmap: learning from experts in public finance and local government, deliberating in small diverse groups, and drafting collective recommendations for state legislators.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Step 2 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Dates & Locations</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Step 2 — Body</div>
+        <div class="field-value editable" contenteditable="true">After 3 months of preparatory work, residents will meet over 6–8 sessions in the summer of 2026 at locations across the state to ensure broad accessibility and representation.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Step 3 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Policy Influence</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Step 3 — Body</div>
+        <div class="field-value editable" contenteditable="true">Assembly recommendations will be brought by State Comptroller Sean Scanlon to a hearing in the State Legislature, serving as the primary evidence base for municipal funding reforms.</div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="section-block">
+      <div class="section-label">Timeline Section</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">Our Path Forward</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">Timeline</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Lead</div>
+        <div class="field-value editable" contenteditable="true">Our path from design to implementation to lasting impact on Connecticut's communities.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Item 1 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Design & Preparation</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Item 1 — Body</div>
+        <div class="field-value editable" contenteditable="true">3 months of preparatory work — forming the expert governance committee, designing the assembly process, and recruiting a representative sample of Connecticut residents.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Item 2 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Summer Sessions 2026</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Item 2 — Body</div>
+        <div class="field-value editable" contenteditable="true">Assembly participants meet for 6–8 structured sessions — hearing from experts, deliberating in small groups, and building consensus around funding priorities.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Item 3 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Draft Recommendations</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Item 3 — Body</div>
+        <div class="field-value editable" contenteditable="true">Citizens collectively draft a set of clear, actionable recommendations for how Connecticut should fund local public services equitably and sustainably.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Item 4 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Legislative Impact</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Item 4 — Body</div>
+        <div class="field-value editable" contenteditable="true">State Comptroller Sean Scanlon presents the assembly's findings at a State Legislature hearing, where they serve as a primary evidence base for municipal funding reform.</div>
+      </div>
+    </div>
+
+    <!-- POLICY -->
+    <div class="section-block">
+      <div class="section-label">Policy / Legislative Partnership Section</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">Legislative Partnership</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">From Citizens to State Policy</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Body</div>
+        <div class="field-value editable" contenteditable="true">The Connecticut Citizens' Assembly works in direct partnership with elected officials to ensure that the voices of everyday residents shape real policy outcomes — not just advisory reports.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Pull Quote</div>
+        <div class="field-value editable" contenteditable="true">"Assembly recommendations will be brought by State Comptroller Sean Scanlon to a hearing in the State Legislature, serving as the primary evidence base for municipal funding reforms."</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Eyebrow 2</div>
+        <div class="field-value editable" contenteditable="true">Our Commitment</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading 2</div>
+        <div class="field-value editable" contenteditable="true">Empowering Citizens with the Information to Shape Connecticut's Future</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Body 2</div>
+        <div class="field-value editable" contenteditable="true">We are committed to transparency, rigorous process design, and genuine civic engagement. Every participant receives the expert knowledge and deliberative support needed to make meaningful, informed recommendations.</div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section-block">
+      <div class="section-label">Contact Section</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">Connect With Us</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">Get in Touch</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Lead</div>
+        <div class="field-value editable" contenteditable="true">Have questions about the assembly or want to provide input? Want to offer financial or in-kind support, or looking for opportunities for research? We are committed to transparency and citizen engagement throughout this process.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">General Inquiries Email</div>
+        <div class="field-value editable" contenteditable="true">info@ct-citizens-assembly.org</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Media Relations Email</div>
+        <div class="field-value editable" contenteditable="true">press@ct-citizens-assembly.org</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Sidebar Body</div>
+        <div class="field-value editable" contenteditable="true">Reach out to our organizing team. We are committed to transparency and citizen engagement throughout this process.</div>
+      </div>
+    </div>
+
+  </div><!-- /index -->
+
+
+  <!-- ============================================================ -->
+  <!-- ABOUT.HTML -->
+  <!-- ============================================================ -->
+  <div class="page-block" id="about">
+    <div class="page-block-header">
+      <h2>About Page</h2>
+      <span class="file-tag">about.html</span>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <div class="section-block">
+      <div class="section-label">Page Header</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">Learn More</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">CT Citizens' Assembly on Local Public Services</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Lead</div>
+        <div class="field-value editable" contenteditable="true">An innovative, state-endorsed democratic process that gives ordinary Connecticut residents the power to shape policy on one of the state's most entrenched challenges.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Key Question (blockquote)</div>
+        <div class="field-value editable" contenteditable="true">"How should Connecticut rethink the funding and delivery of local public services?"</div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="section-block">
+      <div class="section-label">Stat Cards</div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Stat 1 — Number</div><div class="field-value editable" contenteditable="true">100</div></div>
+        <div class="field"><div class="field-label">Stat 1 — Label</div><div class="field-value editable" contenteditable="true">Randomly Selected Citizens</div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Stat 2 — Number</div><div class="field-value editable" contenteditable="true">800+</div></div>
+        <div class="field"><div class="field-label">Stat 2 — Label</div><div class="field-value editable" contenteditable="true">Global Assemblies to Date</div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Stat 3 — Number</div><div class="field-value editable" contenteditable="true">10%</div></div>
+        <div class="field"><div class="field-label">Stat 3 — Label</div><div class="field-value editable" contenteditable="true">of CT Population Reached via AI</div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Stat 4 — Number</div><div class="field-value editable" contenteditable="true">1972</div></div>
+        <div class="field"><div class="field-label">Stat 4 — Label</div><div class="field-value editable" contenteditable="true">Last Major CT Reform</div></div>
+      </div>
+    </div>
+
+    <!-- WHAT IS -->
+    <div class="section-block">
+      <div class="section-label">What Is a Citizens' Assembly?</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">The Process</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">What is a Citizens' Assembly?</div>
+      </div>
+      <div class="field-list">
+        <div class="field-list-item" contenteditable="true">An innovative process to solve difficult problems by leveraging ordinary citizens' perspectives — not politicians, not lobbyists, not experts alone.</div>
+        <div class="field-list-item" contenteditable="true">Analogous to a jury for public policy: a Citizens' Assembly randomly selects 100 ordinary citizens and empowers them to learn, deliberate, and pass recommendations directly to a legislative hearing.</div>
+        <div class="field-list-item" contenteditable="true">New to the US context, Citizens' Assemblies have been used in over 800 cases worldwide to solve entrenched problems — from abortion rights in Ireland to climate policy and end-of-life care in France.</div>
+      </div>
+    </div>
+
+    <!-- WHY CT -->
+    <div class="section-block">
+      <div class="section-label">Why Connecticut Needs a Citizens' Assembly</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">The Problem</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">Why Does Connecticut Need a Citizens' Assembly?</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Lead</div>
+        <div class="field-value editable" contenteditable="true">Connecticut's property tax system creates deep structural inequities across its 169 towns — and decades of political gridlock have prevented reform. A Citizens' Assembly is uniquely positioned to break the deadlock.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card 1 — Highlight</div>
+        <div class="field-value editable" contenteditable="true">Property-only</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card 1 — Heading</div>
+        <div class="field-value editable" contenteditable="true">A Legally Restricted System</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card 1 — Body</div>
+        <div class="field-value editable" contenteditable="true">Unlike many states, Connecticut law currently forbids any taxes for local services other than property taxes — locking municipalities into a single, unequal funding mechanism.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card 2 — Highlight</div>
+        <div class="field-value editable" contenteditable="true">7×</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card 2 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Massive Imbalances</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card 2 — Body</div>
+        <div class="field-value editable" contenteditable="true">Urban areas have lower property wealth but higher demand for local services. The average property tax bill in Hartford is approximately 7 times higher than in Sharon, despite Hartford's median income being ~3x lower.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card 3 — Highlight</div>
+        <div class="field-value editable" contenteditable="true">Since '72</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card 3 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Decades of Gridlock</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Card 3 — Body</div>
+        <div class="field-value editable" contenteditable="true">There is widespread consensus that the system is broken — but solutions are politically challenging. No meaningful reforms have been passed since 1972.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Subheading</div>
+        <div class="field-value editable" contenteditable="true">How a Citizens' Assembly Is Uniquely Set Up to Address It</div>
+      </div>
+      <div class="field-list">
+        <div class="field-list-item" contenteditable="true">Taps a diversity of perspectives, including from people who are normally never heard in the policy process.</div>
+        <div class="field-list-item" contenteditable="true">Proven ability to build consensus: a similar process in Greater New Haven in 2002 on tax issues transformed 80% opposition to a proposal down to 40% in a single weekend.</div>
+      </div>
+    </div>
+
+    <!-- KEY FEATURES -->
+    <div class="section-block">
+      <div class="section-label">Key Features</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">What Makes This Different</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">Key Features of the Assembly</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Feature 1 — Heading</div>
+        <div class="field-value editable" contenteditable="true">First Large State-Level, State-Endorsed Citizens' Assembly in the US</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Feature 1 — Body</div>
+        <div class="field-value editable" contenteditable="true">This assembly sets a national precedent — a state-backed, large-scale citizens' deliberative process on a consequential policy issue, operating at the full state level for the first time in the United States.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Feature 2 — Heading</div>
+        <div class="field-value editable" contenteditable="true">First Large-Scale Use of AI to Link Assembly Discussion with the Public</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Feature 2 — Body</div>
+        <div class="field-value editable" contenteditable="true">Using cutting-edge AI technology, the assembly aims to connect its deliberations with over 10% of Connecticut's population — extending the reach and legitimacy of citizen voices far beyond the assembly room.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Feature 3 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Backed by State Comptroller Sean Scanlon</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Feature 3 — Body</div>
+        <div class="field-value editable" contenteditable="true">Comptroller Scanlon has committed to leverage his reputation as the state's fiscal watchdog and as a thought leader on the state's most pressing problems to endorse the process and echo the voices of the Assembly. The Comptroller, who served as the chair of the General Assembly's Finance Committee during his time in the legislature, will advocate to lawmakers that the citizens' recommendations deserve a designated public hearing and bipartisan consideration along the path to real policy change.</div>
+      </div>
+    </div>
+
+    <!-- BROADER IMPACT -->
+    <div class="section-block">
+      <div class="section-label">Broader Impact</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">Broader Impact</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">Impacts Beyond Connecticut</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Block 1 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Catalyzing a Movement</div>
+      </div>
+      <div class="field-list">
+        <div class="field-list-item" contenteditable="true">Currently collaborating with State Representatives in Vermont and Maine, with interest from Massachusetts and New York, to use this Assembly to foster similar statewide efforts — including legislation to create permanent Citizens' Assemblies.</div>
+        <div class="field-list-item" contenteditable="true">Discussing a partnership with FIDE to have Governors and Secretaries of State from Kentucky, Washington, and Pennsylvania observe the assembly.</div>
+      </div>
+      <div class="field" style="margin-top:0.8rem;">
+        <div class="field-label">Block 2 — Heading</div>
+        <div class="field-value editable" contenteditable="true">Research</div>
+      </div>
+      <div class="field-list">
+        <div class="field-list-item" contenteditable="true">Developing a research program with the Yale Citizens' Assembly Program and Nobel Laureate Oliver Hart to adapt Citizens' Assemblies for corporate governance.</div>
+        <div class="field-list-item" contenteditable="true">Working with researchers at UConn and Yale on additional research questions, including the impact of macro-listening, dispersal effects of the assembly, and more.</div>
+      </div>
+    </div>
+
+    <!-- PATHS TO IMPACT -->
+    <div class="section-block">
+      <div class="section-label">Paths to Impact</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">Legislative Strategy</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">Paths to Impact</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Lead</div>
+        <div class="field-value editable" contenteditable="true">Multiple strategies to drive direct legislative change:</div>
+      </div>
+      <div class="field-list">
+        <div class="field-list-item" contenteditable="true">Commitment from State Comptroller Sean Scanlon to endorse the process and hold a dedicated legislative hearing on assembly outputs.</div>
+        <div class="field-list-item" contenteditable="true">Commitment to bring all four caucus leaders to the assembly in person.</div>
+        <div class="field-list-item" contenteditable="true">Commitment to highlight assembly recommendations during the gubernatorial debate.</div>
+        <div class="field-list-item" contenteditable="true">Network of media relationships including network TV outlets and major newspapers.</div>
+      </div>
+    </div>
+
+    <!-- TIMELINE & BUDGET -->
+    <div class="section-block">
+      <div class="section-label">Timeline & Budget</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">Timeline & Budget</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">How We Get There</div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Phase 1 — Label</div><div class="field-value editable" contenteditable="true">Finalization</div></div>
+        <div class="field"><div class="field-label">Phase 1 — Dates</div><div class="field-value editable" contenteditable="true">January – March</div></div>
+      </div>
+      <div class="field">
+        <div class="field-label">Phase 1 — Description</div>
+        <div class="field-value editable" contenteditable="true">Close funding, confirm go/no-go decision by March.</div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Phase 2 — Label</div><div class="field-value editable" contenteditable="true">Preparation</div></div>
+        <div class="field"><div class="field-label">Phase 2 — Dates</div><div class="field-value editable" contenteditable="true">April – June</div></div>
+      </div>
+      <div class="field">
+        <div class="field-label">Phase 2 — Description</div>
+        <div class="field-value editable" contenteditable="true">3 months preparation window — recruitment, design, expert briefings.</div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Phase 3 — Label</div><div class="field-value editable" contenteditable="true">Execution</div></div>
+        <div class="field"><div class="field-label">Phase 3 — Dates</div><div class="field-value editable" contenteditable="true">July – September</div></div>
+      </div>
+      <div class="field">
+        <div class="field-label">Phase 3 — Description</div>
+        <div class="field-value editable" contenteditable="true">3 months of assembly sessions — learning, deliberation, recommendations.</div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Phase 4 — Label</div><div class="field-value editable" contenteditable="true">Impact Phase</div></div>
+        <div class="field"><div class="field-label">Phase 4 — Dates</div><div class="field-value editable" contenteditable="true">September – Onward</div></div>
+      </div>
+      <div class="field">
+        <div class="field-label">Phase 4 — Description</div>
+        <div class="field-value editable" contenteditable="true">Polls on proposals, gubernatorial campaign exposure, citizen advocacy, and legislative action.</div>
+      </div>
+      <div class="field-row">
+        <div class="field"><div class="field-label">Budget — Pledged</div><div class="field-value editable" contenteditable="true">$650K</div></div>
+        <div class="field"><div class="field-label">Budget — Gap Remaining</div><div class="field-value editable" contenteditable="true">$200K</div></div>
+      </div>
+      <div class="field">
+        <div class="field-label">Budget Callout — Heading</div>
+        <div class="field-value editable" contenteditable="true">Funding Status</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Budget Callout — Body</div>
+        <div class="field-value editable" contenteditable="true">Help close the gap and make this historic assembly a reality.</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="section-block">
+      <div class="section-label">CTA Banner</div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">Support the Assembly</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Body</div>
+        <div class="field-value editable" contenteditable="true">Your contribution helps fund the first large state-level Citizens' Assembly in US history.</div>
+      </div>
+    </div>
+
+  </div><!-- /about -->
+
+
+  <!-- ============================================================ -->
+  <!-- GOVERNANCE.HTML -->
+  <!-- ============================================================ -->
+  <div class="page-block" id="governance">
+    <div class="page-block-header">
+      <h2>Governance Page</h2>
+      <span class="file-tag">governance.html</span>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <div class="section-block">
+      <div class="section-label">Page Header</div>
+      <div class="field">
+        <div class="field-label">Eyebrow</div>
+        <div class="field-value editable" contenteditable="true">Our People</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Heading</div>
+        <div class="field-value editable" contenteditable="true">Interim Expert Governance Committee</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Body</div>
+        <div class="field-value editable" contenteditable="true">The committee is composed of leading scholars, practitioners, and civic leaders who guide the assembly's design, ensure methodological rigor, and bring deep expertise in public finance, deliberative democracy, and Connecticut policy.</div>
+      </div>
+    </div>
+
+    <!-- LEADERSHIP -->
+    <div class="section-block">
+      <div class="section-label">Leadership</div>
+      <div class="field-row">
+        <div>
+          <div class="field"><div class="field-label">Name</div><div class="field-value editable" contenteditable="true">Hélène Landemore</div></div>
+          <div class="field"><div class="field-label">Title</div><div class="field-value editable" contenteditable="true">Chair, Interim Expert Governance Committee</div></div>
+          <div class="field"><div class="field-label">Organization</div><div class="field-value editable" contenteditable="true">Yale University</div></div>
+          <div class="field"><div class="field-label">Bio</div><div class="field-value editable" contenteditable="true">Placeholder biography. Professor Landemore is a leading scholar of deliberative and participatory democracy and will serve as Chair of the Interim Expert Governance Committee.</div></div>
+        </div>
+        <div>
+          <div class="field"><div class="field-label">Name</div><div class="field-value editable" contenteditable="true">Joe DeLong</div></div>
+          <div class="field"><div class="field-label">Title</div><div class="field-value editable" contenteditable="true">Executive Director of CCM</div></div>
+          <div class="field"><div class="field-label">Organization</div><div class="field-value editable" contenteditable="true">Connecticut Conference of Municipalities (CCM)</div></div>
+          <div class="field"><div class="field-label">Bio</div><div class="field-value editable" contenteditable="true">Placeholder biography. Joe DeLong serves as Executive Director of CCM and brings extensive experience in Connecticut municipal policy, local government, and statewide civic engagement.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMMITTEE MEMBERS -->
+    <div class="section-block">
+      <div class="section-label">Committee Members</div>
+      <div class="profile-grid">
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Alex Guerrero</div>
+          <div class="p-title" contenteditable="true">Professor of Philosophy</div>
+          <div class="p-org" contenteditable="true">Rutgers University</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Audrey Tang</div>
+          <div class="p-title" contenteditable="true">Civic Technologist & Former Digital Minister</div>
+          <div class="p-org" contenteditable="true">Taiwan</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Ariel Procaccia</div>
+          <div class="p-title" contenteditable="true">Alfred and Rebecca Lin Professor of Computer Science</div>
+          <div class="p-org" contenteditable="true">Harvard University</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Claire Priest</div>
+          <div class="p-title" contenteditable="true">Simeon E. Baldwin Professor of Law & History</div>
+          <div class="p-org" contenteditable="true">Yale Law School</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Cynthia Farrar</div>
+          <div class="p-title" contenteditable="true">Independent Scholar & Civic Entrepreneur</div>
+          <div class="p-org" contenteditable="true">Community Foundation for Greater New Haven</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Daniel Selz</div>
+          <div class="p-title" contenteditable="true">Fellow</div>
+          <div class="p-org" contenteditable="true">Leadership Now Project</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Jane Suiter</div>
+          <div class="p-title" contenteditable="true">Professor of Political Communication</div>
+          <div class="p-org" contenteditable="true">Dublin City University</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Joshua Kalla</div>
+          <div class="p-title" contenteditable="true">Associate Professor of Political Science & Statistics</div>
+          <div class="p-org" contenteditable="true">Yale University</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Luigi Zingales</div>
+          <div class="p-title" contenteditable="true">Robert C. McCormack Distinguished Service Professor</div>
+          <div class="p-org" contenteditable="true">University of Chicago Booth School of Business</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Michael E. Morrell</div>
+          <div class="p-title" contenteditable="true">Associate Professor of Political Science</div>
+          <div class="p-org" contenteditable="true">University of Connecticut</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Michiel Bakker</div>
+          <div class="p-title" contenteditable="true">Assistant Professor & Research Scientist</div>
+          <div class="p-org" contenteditable="true">MIT / Google DeepMind</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Oliver Hart</div>
+          <div class="p-title" contenteditable="true">Lewis P. and Linda L. Geyser University Professor</div>
+          <div class="p-org" contenteditable="true">Harvard University</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Peter MacLeod</div>
+          <div class="p-title" contenteditable="true">Co-Founder & Principal</div>
+          <div class="p-org" contenteditable="true">Mass LBP</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Sophie Guillain</div>
+          <div class="p-title" contenteditable="true">Managing Director & Partner</div>
+          <div class="p-org" contenteditable="true">Res publica</div>
+        </div>
+        <div class="profile-item">
+          <div class="p-name" contenteditable="true">Zephyr Teachout</div>
+          <div class="p-title" contenteditable="true">Professor of Law</div>
+          <div class="p-org" contenteditable="true">Fordham Law School</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /governance -->
+
+</div><!-- /content-wrap -->
+
+<div class="save-bar">
+  <span class="save-note">This document is for reference and editing. Copy updated text back into the relevant HTML file to apply changes to the live site.</span>
+</div>
+
+</body>
+</html>
