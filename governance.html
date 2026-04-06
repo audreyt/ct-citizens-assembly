@@ -207,6 +207,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     display: block;
   }
 
@@ -384,12 +385,13 @@
 <main class="team-main">
 
   <!-- LEADERSHIP -->
-  <div style="margin-bottom:3rem;">
-    <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);margin-bottom:1.5rem;text-align:center;">Leadership</div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:780px;margin:0 auto;">
+  <div style="margin-bottom:4rem;">
+    <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);margin-bottom:2rem;text-align:center;">Leadership</div>
+    <div style="display:flex;flex-wrap:wrap;gap:2rem;max-width:1000px;margin:0 auto;justify-content:center;">
 
-      <div class="profile-card">
-        <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
+      <!-- Hélène Landemore -->
+      <div class="profile-card" style="width:calc(33.333% - 1.4rem);min-width:260px;">
+        <div class="profile-photo"><img src="media/committee/Landemore_headshot.jpg" alt="Hélène Landemore" /></div>
         <div class="profile-accent" style="background:#7b2d8b;"></div>
         <div class="profile-body">
           <div class="profile-name">Hélène Landemore</div>
@@ -399,174 +401,128 @@
         </div>
       </div>
 
-      <div class="profile-card">
-        <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
+      <!-- Sean Scanlon -->
+      <div class="profile-card" style="width:calc(33.333% - 1.4rem);min-width:260px;">
+        <div class="profile-photo"><img src="https://osc.ct.gov/wp-content/uploads/2023/08/sean_scanlon_square.jpg" alt="Sean Scanlon" /></div>
         <div class="profile-accent" style="background:#c2185b;"></div>
         <div class="profile-body">
+          <div class="profile-name">Sean Scanlon</div>
+          <div class="profile-title">State Comptroller</div>
+          <div class="profile-org">State of Connecticut</div>
+          <div class="profile-bio">Connecticut State Comptroller Sean Scanlon has committed to endorse the assembly process and bring its recommendations to a dedicated legislative hearing, leveraging his constitutional authority on financial issues.</div>
+        </div>
+      </div>
+
+      <!-- Joe DeLong -->
+      <div class="profile-card" style="width:calc(33.333% - 1.4rem);min-width:260px;">
+        <div class="profile-photo"><img src="https://s.hdnux.com/photos/63/76/70/13626891/4/ratio1x1_1920.jpg" alt="Joshua Kalla" /></div>
+        <div class="profile-accent" style="background:#e64a19;"></div>
+        <div class="profile-body">
           <div class="profile-name">Joe DeLong</div>
-          <div class="profile-title">Executive Director of CCM</div>
+          <div class="profile-title">Executive Director</div>
           <div class="profile-org">Connecticut Conference of Municipalities (CCM)</div>
           <div class="profile-bio">Joe DeLong serves as Executive Director of CCM and brings extensive experience in Connecticut municipal policy, local government, and statewide civic engagement.</div>
+        </div>
+      </div>
+
+      <!-- Joshua Kalla -->
+      <div class="profile-card" style="width:calc(33.333% - 1.4rem);min-width:260px;">
+        <div class="profile-photo"><img src="media/committee/Kalla_Headshot.jpg" alt="Joshua Kalla" /></div>
+        <div class="profile-accent" style="background:#f9a825;"></div>
+        <div class="profile-body">
+          <div class="profile-name">Joshua Kalla</div>
+          <div class="profile-title">Associate Professor of Political Science &amp; Statistics</div>
+          <div class="profile-org">Yale University</div>
+          <div class="profile-bio">Joshua Kalla is an expert in political behavior and field experimentation, bringing rigorous empirical methods to the study of civic engagement and public opinion.</div>
+        </div>
+      </div>
+
+      <!-- Michael E. Morrell -->
+      <div class="profile-card" style="width:calc(33.333% - 1.4rem);min-width:260px;">
+        <div class="profile-photo"><img src="https://polisci.media.uconn.edu/wp-content/uploads/sites/3108/2016/02/Morrell_Michael-scaled.jpg" alt="Michael E. Morrell" /></div>
+        <div class="profile-accent" style="background:#ef5350;"></div>
+        <div class="profile-body">
+          <div class="profile-name">Michael E. Morrell</div>
+          <div class="profile-title">Associate Professor of Political Science</div>
+          <div class="profile-org">University of Connecticut</div>
+          <div class="profile-bio">Michael Morrell researches deliberative democracy, political psychology, and civic participation, with deep expertise in how citizens engage with complex policy questions.</div>
         </div>
       </div>
 
     </div>
   </div>
 
-  <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);margin-bottom:1.5rem;text-align:center;">Committee Members</div>
-  <div class="profile-grid" style="max-width:1100px;margin:0 auto;">
+  <!-- COMMITTEE MEMBERS — under construction -->
+  <div style="max-width:860px;margin:0 auto;">
+    <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);margin-bottom:1.2rem;text-align:center;">Committee Members</div>
 
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#7b2d8b;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Alex Guerrero</div>
-        <div class="profile-title">Professor of Philosophy</div>
-        <div class="profile-org">Rutgers University</div>
-      </div>
+    <div style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:12px;padding:1.2rem 1.8rem;margin-bottom:1.8rem;text-align:center;">
+      <p style="font-size:0.88rem;color:var(--gray-text);line-height:1.6;">The full committee roster is currently being finalized. Member profiles and bios will be added shortly.</p>
     </div>
 
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#c2185b;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Audrey Tang</div>
-        <div class="profile-title">Civic Technologist & Former Digital Minister</div>
-        <div class="profile-org">Taiwan</div>
+    <div style="border:1px solid var(--gray-mid);border-radius:12px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;background:var(--navy-dark);padding:0.75rem 1.4rem;">
+        <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Name</div>
+        <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Affiliation</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:white;">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Alex Guerrero</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">Rutgers University</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:var(--off-white);">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Ariel Procaccia</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">Harvard University</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:white;">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Audrey Tang</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">Former Digital Minister, Taiwan</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:var(--off-white);">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Claire Priest</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">Yale Law School</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:white;">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Cynthia Farrar</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">Yale University</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:var(--off-white);">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Daniel Selz</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">$1 Billion for Trust</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:white;">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Jane Suiter</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">Dublin City University</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:var(--off-white);">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Luigi Zingales</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">University of Chicago, Booth School of Business</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:white;">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Michiel Bakker</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">Google</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:var(--off-white);">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Oliver Hart</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">Harvard University</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:white;">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Peter MacLeod</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">MASS LBP</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:var(--off-white);">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Sophie Guillain</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">Res publica</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:0.85rem 1.4rem;border-bottom:1px solid var(--gray-mid);background:white;">
+        <div style="font-size:0.9rem;font-weight:700;color:var(--navy-dark);">Zephyr Teachout</div>
+        <div style="font-size:0.9rem;color:var(--gray-text);">Fordham Law School</div>
+      </div>
+      <div style="padding:0.85rem 1.4rem;background:var(--off-white);text-align:center;">
+        <div style="font-size:0.85rem;font-style:italic;color:var(--gray-text);">More members to be announced...</div>
       </div>
     </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#e64a19;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Ariel Procaccia</div>
-        <div class="profile-title">Alfred and Rebecca Lin Professor of Computer Science</div>
-        <div class="profile-org">Harvard University</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#f9a825;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Claire Priest</div>
-        <div class="profile-title">Simeon E. Baldwin Professor of Law & History</div>
-        <div class="profile-org">Yale Law School</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#ef5350;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Cynthia Farrar</div>
-        <div class="profile-title">Independent Scholar & Civic Entrepreneur</div>
-        <div class="profile-org">Community Foundation for Greater New Haven</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#880e4f;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Daniel Selz</div>
-        <div class="profile-title">Fellow</div>
-        <div class="profile-org">Leadership Now Project</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#7b2d8b;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Jane Suiter</div>
-        <div class="profile-title">Professor of Political Communication</div>
-        <div class="profile-org">Dublin City University</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#c2185b;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Joshua Kalla</div>
-        <div class="profile-title">Associate Professor of Political Science & Statistics</div>
-        <div class="profile-org">Yale University</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#e64a19;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Luigi Zingales</div>
-        <div class="profile-title">Robert C. McCormack Distinguished Service Professor</div>
-        <div class="profile-org">University of Chicago Booth School of Business</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#f9a825;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Michael E. Morrell</div>
-        <div class="profile-title">Associate Professor of Political Science</div>
-        <div class="profile-org">University of Connecticut</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#ef5350;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Michiel Bakker</div>
-        <div class="profile-title">Assistant Professor & Research Scientist</div>
-        <div class="profile-org">MIT / Google DeepMind</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#880e4f;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Oliver Hart</div>
-        <div class="profile-title">Lewis P. and Linda L. Geyser University Professor</div>
-        <div class="profile-org">Harvard University</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#7b2d8b;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Peter MacLeod</div>
-        <div class="profile-title">Co-Founder & Principal</div>
-        <div class="profile-org">Mass LBP</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#c2185b;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Sophie Guillain</div>
-        <div class="profile-title">Managing Director & Partner</div>
-        <div class="profile-org">Res publica</div>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-photo"><div class="profile-photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div></div>
-      <div class="profile-accent" style="background:#e64a19;"></div>
-      <div class="profile-body">
-        <div class="profile-name">Zephyr Teachout</div>
-        <div class="profile-title">Professor of Law</div>
-        <div class="profile-org">Fordham Law School</div>
-      </div>
-    </div>
-
   </div>
+
 </main>
 
 <!-- COLLABORATORS -->
