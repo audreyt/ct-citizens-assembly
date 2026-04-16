@@ -1397,10 +1397,17 @@
       </div>
       <div style="border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(26,35,126,0.1);border:1px solid var(--gray-mid);">
         <object data="media/invitation-letter.pdf" type="application/pdf" width="100%" height="900" style="display:block;">
-          <div style="padding:2rem;text-align:center;background:var(--gray-light);">
-            <p style="color:var(--gray-text);margin-bottom:1rem;">Your browser cannot display the PDF inline.</p>
-            <a href="media/invitation-letter.pdf" download style="background:var(--navy-dark);color:white;padding:0.6rem 1.4rem;border-radius:4px;text-decoration:none;font-weight:700;font-size:0.9rem;">Download Invitation Letter</a>
-          </div>
+          <iframe
+            src="https://docs.google.com/viewer?url=https://ct-citizens-assembly.org/media/invitation-letter.pdf&embedded=true"
+            width="100%"
+            height="900"
+            style="display:block;border:none;"
+            title="CT Citizens' Assembly Invitation Letter">
+            <div style="padding:2rem;text-align:center;background:var(--gray-light);">
+              <p style="color:var(--gray-text);margin-bottom:1rem;">Your browser cannot display the PDF inline.</p>
+              <a href="media/invitation-letter.pdf" download style="background:var(--navy-dark);color:white;padding:0.6rem 1.4rem;border-radius:4px;text-decoration:none;font-weight:700;font-size:0.9rem;">Download Invitation Letter</a>
+            </div>
+          </iframe>
         </object>
       </div>
       <div style="display:none;flex-direction:column;gap:1.5rem;">
