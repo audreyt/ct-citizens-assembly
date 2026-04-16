@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Donors — Connecticut Citizens' Assembly</title>
+<link rel="icon" type="image/png" href="media/ct-honeycomb.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CYXQ157GLP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CYXQ157GLP');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #1a237e;
+    --navy-dark: #0d1757;
+    --navy-light: #283593;
+    --purple: #7b2d8b;
+    --magenta: #c2185b;
+    --orange: #e64a19;
+    --yellow: #f9a825;
+    --coral: #ef5350;
+    --white: #ffffff;
+    --off-white: #f8f9fd;
+    --gray-light: #eef0f8;
+    --gray-mid: #c5cae9;
+    --gray-text: #5c6bc0;
+    --text: #1a237e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Public Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 70px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    border-bottom: 4px solid transparent;
+    border-image: linear-gradient(to right, #7b2d8b, #c2185b, #e64a19, #f9a825, #ef5350) 1;
+  }
+
+  .nav-logo img { height: 62px; display: block; }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover { color: var(--purple); }
+  .nav-links a.active { color: var(--purple); }
+
+  .nav-cta {
+    background: var(--navy-dark);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover { background: var(--purple) !important; color: var(--white) !important; }
+
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--navy);
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 1100px) {
+    .nav-hamburger { display: block; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0; right: 0;
+      background: white;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border-top: 3px solid var(--purple);
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+  }
+
+  /* COLOR STRIPE */
+  .color-stripe { display: flex; height: 5px; }
+  .color-stripe span { flex: 1; }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 9rem 2rem 5rem;
+    background: var(--off-white);
+    border-bottom: 1px solid var(--gray-mid);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(123,45,139,0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .page-header-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    color: var(--navy-dark);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .page-header h1 span { color: var(--magenta); }
+
+  .page-header p {
+    font-size: 1.05rem;
+    color: var(--gray-text);
+    line-height: 1.8;
+  }
+
+  /* MAIN */
+  .donors-main {
+    padding: 5rem 2rem 6rem;
+    background: var(--white);
+  }
+
+  .container { max-width: 860px; margin: 0 auto; }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 900;
+    color: var(--navy-dark);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-title span { color: var(--magenta); }
+
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--gray-text);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* DONOR TIERS */
+  .donor-tier {
+    margin-bottom: 3.5rem;
+  }
+
+  .donor-tier-label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .donor-tier-label h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+  }
+
+  .tier-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    color: white;
+  }
+
+  .donor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .donor-name {
+    font-size: 1rem;
+    color: var(--navy-dark);
+    font-weight: 500;
+    padding: 0.75rem 1.2rem;
+    background: var(--gray-light);
+    border-radius: 8px;
+    border-left: 4px solid var(--gray-mid);
+  }
+
+  /* GRATITUDE BANNER */
+  .gratitude-banner {
+    background: linear-gradient(135deg, var(--navy-dark), var(--purple));
+    border-radius: 14px;
+    padding: 2.5rem 3rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .gratitude-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+  }
+
+  .gratitude-banner p {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.97rem;
+    line-height: 1.75;
+    max-width: 560px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .btn-yellow {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--navy-dark);
+    padding: 0.75rem 1.8rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .btn-yellow:hover { background: white; }
+
+  /* FOOTER */
+  footer {
+    background: #050d2a;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.85rem;
+  }
+
+  footer span { color: var(--yellow); opacity: 0.8; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="media/CTCA-honeycomb.png" alt="Connecticut Citizens' Assembly" /></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#invitation">Invitation</a></li>
+    <li><a href="index.html#timeline">Timeline</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <!-- <li><a href="team.html">Governance</a></li> -->
+    <li><a href="press.html">Press</a></li>
+    <li><a href="donors.html" class="active">Donors</a></li>
+    <li><a href="login.html" id="nav-auth-link">Login</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Support the Assembly</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation">&#9776;</button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-content">
+    <h1>Donor Acknowledgement</h1>
+    <p>The Connecticut Citizens' Assembly is made possible by the generous support of individuals and organizations committed to strengthening democracy in Connecticut.</p>
+  </div>
+</div>
+<div class="color-stripe">
+  <span style="background:#7b2d8b;"></span>
+  <span style="background:#c2185b;"></span>
+  <span style="background:#e64a19;"></span>
+  <span style="background:#f9a825;"></span>
+  <span style="background:#ef5350;"></span>
+</div>
+
+<!-- DONORS -->
+<section class="donors-main">
+  <div class="container">
+
+    <div class="gratitude-banner">
+      <h2>Thank You to Our Supporters</h2>
+      <p>Your contributions make it possible for 100 Connecticut residents to come together, learn, and shape the future of how our state funds local public services. We are deeply grateful for your investment in participatory democracy.</p>
+      <a href="index.html#contact" class="btn-yellow">Support the Assembly →</a>
+    </div>
+
+    <div class="section-eyebrow">With Gratitude</div>
+    <h2 class="section-title">Our <span>Donors</span></h2>
+    <p class="section-lead">We gratefully acknowledge the following individuals and organizations whose generosity funds this historic initiative.</p>
+
+    <!-- Founding Supporters -->
+    <div class="donor-tier">
+      <div class="donor-tier-label">
+        <span class="tier-badge" style="background:var(--purple);">Founding Supporters</span>
+      </div>
+      <div class="donor-list">
+        <div class="donor-name" style="border-left-color:var(--purple);">Donor name to be added</div>
+      </div>
+    </div>
+
+    <!-- Major Supporters -->
+    <div class="donor-tier">
+      <div class="donor-tier-label">
+        <span class="tier-badge" style="background:var(--magenta);">Major Supporters</span>
+      </div>
+      <div class="donor-list">
+        <div class="donor-name" style="border-left-color:var(--magenta);">Donor name to be added</div>
+      </div>
+    </div>
+
+    <!-- Supporters -->
+    <div class="donor-tier">
+      <div class="donor-tier-label">
+        <span class="tier-badge" style="background:var(--navy-light);">Supporters</span>
+      </div>
+      <div class="donor-list">
+        <div class="donor-name" style="border-left-color:var(--navy-light);">Donor name to be added</div>
+      </div>
+    </div>
+
+    <p style="font-size:0.85rem;color:var(--gray-text);text-align:center;margin-top:2rem;">This list reflects donors as of April 2026. If you believe there is an error or omission, please contact <a href="mailto:info@ct-citizens-assembly.org" style="color:var(--purple);font-weight:600;">info@ct-citizens-assembly.org</a>.</p>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Connecticut Citizens' Assembly</span>. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script>
+  (async () => {
+    const { data: { session } } = await db.auth.getSession();
+    const link = document.getElementById('nav-auth-link');
+    if (session) {
+      link.textContent = 'My Account';
+      link.href = 'dashboard.html';
+    }
+  })();
+
+  function toggleMobileNav() {
+    document.querySelector('.nav-links').classList.toggle('open');
+  }
+</script>
+</body>
+</html>

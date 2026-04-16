@@ -1302,6 +1302,7 @@
     <li><a href="resources.html">Resources</a></li>
     <!-- <li><a href="team.html">Governance</a></li> -->
     <li><a href="press.html">Press</a></li>
+    <li><a href="donors.html">Donors</a></li>
     <li><a href="login.html" id="nav-auth-link">Login</a></li>
     <li><a href="#contact" class="nav-cta">Support the Assembly</a></li>
   </ul>
@@ -1388,13 +1389,21 @@
     <div class="invitation-shell">
       <div class="invitation-header">
         <h2 class="section-title">Invitation Letter</h2>
-        <p class="section-lead">The mailed invitation is now available as an accessible web preview, with the original PDF still available for download.</p>
+        <p class="section-lead" style="max-width:100%;">The official invitation sent to selected Connecticut residents to participate in the Citizens' Assembly.</p>
       </div>
       <div class="invitation-actions">
-        <a href="media/invitation-letter.pdf" class="btn-primary" download>Download Original PDF</a>
+        <a href="media/invitation-letter.pdf" class="btn-primary" download>Download PDF</a>
         <a href="https://osc.ct.gov/ctassembly/" class="btn-secondary" target="_blank" rel="noreferrer">Verify Invitation</a>
       </div>
-      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(26,35,126,0.1);border:1px solid var(--gray-mid);">
+        <object data="media/invitation-letter.pdf" type="application/pdf" width="100%" height="900" style="display:block;">
+          <div style="padding:2rem;text-align:center;background:var(--gray-light);">
+            <p style="color:var(--gray-text);margin-bottom:1rem;">Your browser cannot display the PDF inline.</p>
+            <a href="media/invitation-letter.pdf" download style="background:var(--navy-dark);color:white;padding:0.6rem 1.4rem;border-radius:4px;text-decoration:none;font-weight:700;font-size:0.9rem;">Download Invitation Letter</a>
+          </div>
+        </object>
+      </div>
+      <div style="display:none;flex-direction:column;gap:1.5rem;">
         <article class="invite-page invite-page-primary">
           <img src="media/Connecticut_State_Comptroller_Seal.png" alt="" class="invite-watermark" aria-hidden="true" />
           <div class="invite-chip">Public Copy</div>
@@ -1486,7 +1495,7 @@
             </div>
           </div>
         </article>
-      </div>
+      </div><!-- end hidden -->
     </div>
   </div>
 </section>
